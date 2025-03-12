@@ -1,0 +1,74 @@
+
+import React, { useEffect, useState } from 'react';
+import { cn } from '@/lib/utils';
+import MobileMenu from './ui/MobileMenu';
+
+const navLinks = [
+  { title: 'Jak to działa', href: '#how-it-works' },
+  { title: 'Korzyści', href: '#benefits' },
+  { title: 'Dla kogo', href: '#stats' },
+  { title: 'Opinie klientów', href: '#testimonials' },
+  { title: 'FAQ', href: '#faq' },
+  { title: 'Kontakt', href: '#contact' },
+];
+
+const Header: React.FC = () => {
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const offset = window.scrollY;
+      if (offset > 50) {
+        setScrolled(true);
+      } else {
+        setScrolled(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
+  return (
+    <header 
+      className={cn(
+        'fixed top-0 left-0 right-0 z-50 transition-all duration-300 py-4 backdrop-blur-md',
+        scrolled ? 'bg-white/90 shadow-sm py-3' : 'bg-transparent'
+      )}
+    >
+      <div className="container-custom flex items-center justify-between">
+        {/* Logo */}
+        <a href="/" className="flex items-center">
+          <div className="flex items-center gap-2">
+            <div className="text-energo-yellow font-bold text-3xl">
+              <span className="text-energo-navy">EnerGo</span>Deal
+            </div>
+          </div>
+        </a>
+
+        {/* Desktop Navigation */}
+        <nav className="hidden md:flex items-center">
+          <ul className="flex space-x-8">
+            {navLinks.map((link) => (
+              <li key={link.href}>
+                <a
+                  href={link.href}
+                  className="text-energo-navy/80 font-medium hover:text-energo-yellow transition-colors relative after:absolute after:bottom-[-4px] after:left-0 after:h-[2px] after:w-0 after:bg-energo-yellow after:transition-all hover:after:w-full"
+                >
+                  {link.title}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+
+        {/* Mobile Menu */}
+        <MobileMenu links={navLinks} />
+      </div>
+    </header>
+  );
+};
+
+export default Header;

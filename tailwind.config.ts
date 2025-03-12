@@ -1,4 +1,6 @@
+
 import type { Config } from "tailwindcss";
+import { fontFamily } from "tailwindcss/defaultTheme";
 
 export default {
 	darkMode: ["class"],
@@ -61,12 +63,20 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
+				},
+				energo: {
+					navy: "#1A2442",
+					yellow: "#FBB034",
+					"light-gray": "#F5F5F5",
 				}
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
 				md: 'calc(var(--radius) - 2px)',
 				sm: 'calc(var(--radius) - 4px)'
+			},
+			fontFamily: {
+				sans: ["Inter var", ...fontFamily.sans],
 			},
 			keyframes: {
 				'accordion-down': {
@@ -84,11 +94,40 @@ export default {
 					to: {
 						height: '0'
 					}
+				},
+				fadeIn: {
+					'0%': { opacity: '0', transform: 'translateY(10px)' },
+					'100%': { opacity: '1', transform: 'translateY(0)' }
+				},
+				slideInFromRight: {
+					'0%': { transform: 'translateX(100%)' },
+					'100%': { transform: 'translateX(0)' }
+				},
+				slideInFromLeft: {
+					'0%': { transform: 'translateX(-100%)' },
+					'100%': { transform: 'translateX(0)' }
+				},
+				pulseGlow: {
+					'0%, 100%': { 
+						boxShadow: '0 0 0 rgba(251, 176, 52, 0)'
+					},
+					'50%': { 
+						boxShadow: '0 0 20px rgba(251, 176, 52, 0.5)'
+					}
+				},
+				float: {
+					'0%, 100%': { transform: 'translateY(0)' },
+					'50%': { transform: 'translateY(-10px)' }
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
+				'accordion-up': 'accordion-up 0.2s ease-out',
+				'fade-in': 'fadeIn 0.7s ease-out forwards',
+				'slide-in-right': 'slideInFromRight 0.5s ease-out forwards',
+				'slide-in-left': 'slideInFromLeft 0.5s ease-out forwards',
+				'pulse-glow': 'pulseGlow 2s infinite',
+				'float': 'float 6s ease-in-out infinite'
 			}
 		}
 	},
