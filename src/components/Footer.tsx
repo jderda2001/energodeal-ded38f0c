@@ -20,9 +20,11 @@ const Footer: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           <div>
             <div className="mb-6">
-              <div className="text-energo-yellow font-bold text-2xl">
-                <span className="text-energo-navy">EnerGo</span>Deal
-              </div>
+              <img 
+                src="/lovable-uploads/8b0d87fe-7fb6-4433-8474-a2e3fcc68f6c.png" 
+                alt="EnerGoDeal" 
+                className="h-14"
+              />
             </div>
             
             <p className="text-gray-600 mb-6">
@@ -69,8 +71,6 @@ const Footer: React.FC = () => {
               <li><FooterLink href="#">Audyt energetyczny</FooterLink></li>
               <li><FooterLink href="#">Optymalizacja taryf</FooterLink></li>
               <li><FooterLink href="#">Renegocjacja umów</FooterLink></li>
-              <li><FooterLink href="#">Zarządzanie mocą bierną</FooterLink></li>
-              <li><FooterLink href="#">Doradztwo energetyczne</FooterLink></li>
             </ul>
           </div>
           
@@ -80,10 +80,6 @@ const Footer: React.FC = () => {
             </h4>
             <ul className="space-y-2">
               <li><FooterLink href="#">O nas</FooterLink></li>
-              <li><FooterLink href="#">Zespół</FooterLink></li>
-              <li><FooterLink href="#">Kariera</FooterLink></li>
-              <li><FooterLink href="#">Partnerzy</FooterLink></li>
-              <li><FooterLink href="#">Blog</FooterLink></li>
             </ul>
           </div>
           
@@ -94,9 +90,6 @@ const Footer: React.FC = () => {
             <ul className="space-y-2">
               <li><FooterLink href="#">Polityka prywatności</FooterLink></li>
               <li><FooterLink href="#">Warunki korzystania</FooterLink></li>
-              <li><FooterLink href="#">Regulamin usług</FooterLink></li>
-              <li><FooterLink href="#">Ochrona danych</FooterLink></li>
-              <li><FooterLink href="#">Cookies</FooterLink></li>
             </ul>
           </div>
         </div>
@@ -109,7 +102,6 @@ const Footer: React.FC = () => {
           <div className="flex space-x-6">
             <FooterLink href="#">Polityka prywatności</FooterLink>
             <FooterLink href="#">Warunki korzystania</FooterLink>
-            <FooterLink href="#">Cookies</FooterLink>
           </div>
         </div>
       </div>

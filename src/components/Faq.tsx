@@ -60,10 +60,10 @@ const Faq: React.FC = () => {
           <Accordion type="single" collapsible className="bg-white rounded-xl shadow-sm overflow-hidden">
             {faqs.map((faq, index) => (
               <AccordionItem key={index} value={`item-${index}`}>
-                <AccordionTrigger className="px-6 py-4 hover:bg-gray-50 hover:no-underline font-medium text-energo-navy">
+                <AccordionTrigger className="px-6 py-4 hover:bg-gray-50 hover:no-underline font-medium text-energo-navy text-sm sm:text-base">
                   {faq.question}
                 </AccordionTrigger>
-                <AccordionContent className="px-6 py-4 text-gray-600">
+                <AccordionContent className="px-6 py-4 text-gray-600 text-xs sm:text-sm">
                   {faq.answer}
                 </AccordionContent>
               </AccordionItem>
@@ -72,7 +72,7 @@ const Faq: React.FC = () => {
         </FadeInSection>
 
         <div className="mt-16 text-center">
-          <p className="text-gray-600 mb-6">
+          <p className="text-gray-600 mb-6 text-sm">
             Nie znalazłeś odpowiedzi na swoje pytanie?
           </p>
           <a href="#contact" className="btn-primary">

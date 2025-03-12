@@ -42,9 +42,11 @@ const Header: React.FC = () => {
         {/* Logo */}
         <a href="/" className="flex items-center">
           <div className="flex items-center gap-2">
-            <div className="text-energo-yellow font-bold text-3xl">
-              <span className="text-energo-navy">EnerGo</span>Deal
-            </div>
+            <img 
+              src="/lovable-uploads/da69be4c-5c24-438e-94b1-59ed64e0b9df.png" 
+              alt="EnerGoDeal" 
+              className="h-10 sm:h-12"
+            />
           </div>
         </a>
 

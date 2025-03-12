@@ -97,7 +97,7 @@ const Benefits: React.FC = () => {
         </div>
 
         <div className="mt-16 p-8 rounded-2xl bg-gradient-to-r from-energo-navy to-energo-navy/90 text-white text-center max-w-3xl mx-auto shadow-xl">
-          <h3 className="text-2xl md:text-3xl font-semibold mb-4">Zacznij oszczędzać bez ryzyka</h3>
+          <h3 className="text-2xl md:text-3xl font-semibold mb-4 text-white">Zacznij oszczędzać bez ryzyka</h3>
           <p className="text-white/80 mb-8 max-w-xl mx-auto">
             Nie wymagamy żadnych przedpłat ani zobowiązań. Wynagrodzenie pobieramy tylko jako procent od realnie osiągniętych oszczędności.
           </p>
