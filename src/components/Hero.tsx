@@ -64,7 +64,8 @@ const Hero: React.FC = () => {
             </div>
           </FadeInSection>
           
-          <FadeInSection className="order-1 lg:order-2" direction="right">
+          {/* Hide the image on mobile, show on lg screens and up */}
+          <FadeInSection className="order-1 lg:order-2 hidden lg:block" direction="right">
             <div className="relative">
               <div className="relative w-full h-[400px] md:h-[500px] rounded-xl overflow-hidden shadow-2xl animate-float">
                 <div className="absolute inset-0 bg-gradient-to-br from-energo-navy to-energo-navy/80 opacity-90 z-10"></div>
