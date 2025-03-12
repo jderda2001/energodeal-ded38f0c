@@ -48,6 +48,21 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ links }) => {
     setIsOpen(false);
   };
 
+  const scrollToContact = () => {
+    const contactSection = document.getElementById('contact');
+    if (contactSection) {
+      const headerOffset = 80;
+      const elementPosition = contactSection.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+      
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+    }
+    closeMenu();
+  };
+
   return (
     <div className="md:hidden">
       <button
@@ -98,6 +113,16 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ links }) => {
               </li>
             ))}
           </ul>
+          
+          {/* "Zaoszczędź" button in mobile menu */}
+          <div className="mt-8 pt-6 border-t border-gray-100">
+            <button
+              onClick={scrollToContact}
+              className="w-full py-3 px-4 bg-energo-yellow text-energo-navy font-medium rounded-md hover:bg-energo-yellow/90 transition-colors"
+            >
+              Zaoszczędź
+            </button>
+          </div>
         </nav>
       </div>
     </div>

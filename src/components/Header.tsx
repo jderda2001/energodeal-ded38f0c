@@ -31,6 +31,20 @@ const Header: React.FC = () => {
     };
   }, []);
 
+  const scrollToContact = () => {
+    const contactSection = document.getElementById('contact');
+    if (contactSection) {
+      const headerOffset = 80;
+      const elementPosition = contactSection.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+      
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+    }
+  };
+
   return (
     <header 
       className={cn(
@@ -39,19 +53,19 @@ const Header: React.FC = () => {
       )}
     >
       <div className="container-custom flex items-center justify-between">
-        {/* Logo */}
+        {/* Logo - significantly increased size */}
         <a href="/" className="flex items-center">
           <div className="flex items-center gap-2">
             <img 
               src="/lovable-uploads/da69be4c-5c24-438e-94b1-59ed64e0b9df.png" 
               alt="EnerGoDeal" 
-              className="h-10 sm:h-12"
+              className="h-16 sm:h-20"
             />
           </div>
         </a>
 
-        {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center">
+        {/* Centered Desktop Navigation */}
+        <nav className="hidden md:flex items-center justify-center flex-1 mx-4">
           <ul className="flex space-x-8">
             {navLinks.map((link) => (
               <li key={link.href}>
@@ -65,6 +79,14 @@ const Header: React.FC = () => {
             ))}
           </ul>
         </nav>
+
+        {/* "Zaoszczędź" button in the top right corner */}
+        <button
+          onClick={scrollToContact}
+          className="hidden md:flex items-center justify-center px-5 py-2.5 bg-energo-yellow text-energo-navy font-medium rounded-md hover:bg-energo-yellow/90 transition-colors"
+        >
+          Zaoszczędź
+        </button>
 
         {/* Mobile Menu */}
         <MobileMenu links={navLinks} />
