@@ -1,10 +1,16 @@
 
 import React, { useState } from 'react';
-import { Mail, Phone, MapPin, Send, CheckCircle2 } from 'lucide-react';
+import { Mail, Phone, Send, CheckCircle2 } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import SectionTitle from './ui/SectionTitle';
 import FadeInSection from './ui/FadeInSection';
 import { cn } from '@/lib/utils';
+import { createClient } from '@supabase/supabase-js';
+
+// Initialize Supabase client
+const supabaseUrl = 'https://xpgxbvazscgxvrnrfxpw.supabase.co';
+const supabaseAnonKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InhwZ3hidmF6c2NneHZybnJmeHB3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTQzMzcxMjgsImV4cCI6MjAyOTkxMzEyOH0.40NPk3cxqexZLkO-ZXlzDlZRLjmXV1WUuUj1OZWtAd0';
+const supabase = createClient(supabaseUrl, supabaseAnonKey);
 
 const ContactForm: React.FC = () => {
   const { toast } = useToast();
@@ -27,13 +33,27 @@ const ContactForm: React.FC = () => {
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
     
-    // Simulate form submission
-    setTimeout(() => {
-      setIsSubmitting(false);
+    try {
+      // Submit to Supabase
+      const { error } = await supabase
+        .from('contact_submissions')
+        .insert([formData]);
+      
+      if (error) {
+        console.error('Error submitting form:', error);
+        toast({
+          title: "Błąd podczas wysyłania formularza",
+          description: "Spróbuj ponownie za chwilę",
+          variant: "destructive",
+        });
+        setIsSubmitting(false);
+        return;
+      }
+      
       setIsSuccess(true);
       
       toast({
@@ -54,27 +74,29 @@ const ContactForm: React.FC = () => {
         });
         setIsSuccess(false);
       }, 3000);
-    }, 1500);
+    } catch (err) {
+      console.error('Error:', err);
+      toast({
+        title: "Błąd podczas wysyłania formularza",
+        description: "Spróbuj ponownie za chwilę",
+        variant: "destructive",
+      });
+      setIsSubmitting(false);
+    }
   };
 
   const contactDetails = [
     {
       icon: Phone,
       title: "Telefon",
-      details: "+48 22 123 45 67",
-      href: "tel:+48221234567"
+      details: "+48 667 752 605",
+      href: "tel:+48667752605"
     },
     {
       icon: Mail,
       title: "Email",
-      details: "kontakt@energodeal.pl",
-      href: "mailto:kontakt@energodeal.pl"
-    },
-    {
-      icon: MapPin,
-      title: "Adres",
-      details: "ul. Energetyczna 15, 00-001 Warszawa",
-      href: "https://maps.google.com/?q=Warszawa,ul.Energetyczna15"
+      details: "j.witek@energodeal.pl",
+      href: "mailto:j.witek@energodeal.pl"
     }
   ];
 
@@ -256,26 +278,6 @@ const ContactForm: React.FC = () => {
                     </div>
                   </a>
                 ))}
-              </div>
-              
-              <div>
-                <h4 className="text-xl font-medium mb-4 text-white">
-                  Godziny pracy
-                </h4>
-                <div className="space-y-2 text-white/80">
-                  <div className="flex justify-between">
-                    <div>Poniedziałek - Piątek:</div>
-                    <div>8:00 - 17:00</div>
-                  </div>
-                  <div className="flex justify-between">
-                    <div>Sobota:</div>
-                    <div>9:00 - 14:00</div>
-                  </div>
-                  <div className="flex justify-between">
-                    <div>Niedziela:</div>
-                    <div>Zamknięte</div>
-                  </div>
-                </div>
               </div>
             </div>
           </FadeInSection>

@@ -17,13 +17,13 @@ const Footer: React.FC = () => {
   return (
     <footer className="bg-white border-t border-gray-200">
       <div className="container-custom py-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           <div>
             <div className="mb-6">
               <img 
                 src="/lovable-uploads/8b0d87fe-7fb6-4433-8474-a2e3fcc68f6c.png" 
                 alt="EnerGoDeal" 
-                className="h-14"
+                className="h-[16.8px]" /* Increased by 20% from h-14 */
               />
             </div>
             
@@ -42,23 +42,9 @@ const Footer: React.FC = () => {
               <a 
                 href="#" 
                 className="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center text-gray-600 hover:bg-energo-yellow hover:text-white transition-colors"
-                aria-label="Twitter"
-              >
-                <Twitter size={18} />
-              </a>
-              <a 
-                href="#" 
-                className="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center text-gray-600 hover:bg-energo-yellow hover:text-white transition-colors"
                 aria-label="LinkedIn"
               >
                 <Linkedin size={18} />
-              </a>
-              <a 
-                href="#" 
-                className="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center text-gray-600 hover:bg-energo-yellow hover:text-white transition-colors"
-                aria-label="Instagram"
-              >
-                <Instagram size={18} />
               </a>
             </div>
           </div>
@@ -68,18 +54,9 @@ const Footer: React.FC = () => {
               Usługi
             </h4>
             <ul className="space-y-2">
-              <li><FooterLink href="#">Audyt energetyczny</FooterLink></li>
-              <li><FooterLink href="#">Optymalizacja taryf</FooterLink></li>
-              <li><FooterLink href="#">Renegocjacja umów</FooterLink></li>
-            </ul>
-          </div>
-          
-          <div>
-            <h4 className="text-lg font-semibold mb-4 text-energo-navy">
-              Firma
-            </h4>
-            <ul className="space-y-2">
-              <li><FooterLink href="#">O nas</FooterLink></li>
+              <li><FooterLink href="#how-it-works">Audyt energetyczny</FooterLink></li>
+              <li><FooterLink href="#benefits">Optymalizacja taryf</FooterLink></li>
+              <li><FooterLink href="#benefits">Renegocjacja umów</FooterLink></li>
             </ul>
           </div>
           
