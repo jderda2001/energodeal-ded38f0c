@@ -1,6 +1,5 @@
-
 import React from 'react';
-import { ClipboardCheck, FileSpreadsheet, TrendingDown, ReceiptCheck } from 'lucide-react';
+import { ClipboardCheck, FileSpreadsheet, TrendingDown, CheckCircle } from 'lucide-react';
 import SectionTitle from './ui/SectionTitle';
 import FadeInSection from './ui/FadeInSection';
 
@@ -24,7 +23,7 @@ const steps = [
     delay: 300
   },
   {
-    icon: ReceiptCheck,
+    icon: CheckCircle,
     title: 'Mierzalne oszczędności',
     description: 'Monitorujemy rezultaty i dostarczamy regularne raporty o osiągniętych oszczędnościach. Płacisz tylko za realne zmniejszenie kosztów.',
     delay: 400
