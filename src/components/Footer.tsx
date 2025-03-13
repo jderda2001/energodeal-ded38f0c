@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Facebook, Mail, Phone, Instagram, TikTok } from 'lucide-react';
+import { Facebook, Mail, Phone, Instagram } from 'lucide-react';
 
 const FooterLink: React.FC<{
   href: string;
@@ -12,6 +12,23 @@ const FooterLink: React.FC<{
     {children}
   </a>;
 
+// Custom TikTok icon since it's not available in lucide-react
+const TikTokIcon = () => (
+  <svg 
+    xmlns="http://www.w3.org/2000/svg" 
+    width="18" 
+    height="18" 
+    viewBox="0 0 24 24" 
+    fill="none" 
+    stroke="currentColor" 
+    strokeWidth="2" 
+    strokeLinecap="round" 
+    strokeLinejoin="round"
+  >
+    <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"></path>
+  </svg>
+);
+
 const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
   
@@ -20,7 +37,7 @@ const Footer: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div>
             <div className="mb-6">
-              <img alt="EnerGoDeal" src="/lovable-uploads/b07ead46-a3bd-4d3c-8d44-5f687b06e346.png" className="h-[80px]" />
+              <img alt="EnerGoDeal" src="/lovable-uploads/b07ead46-a3bd-4d3c-8d44-5f687b06e346.png" className="h-[96px]" />
             </div>
             
             <p className="text-gray-600 mb-6">
@@ -53,7 +70,7 @@ const Footer: React.FC = () => {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <TikTok size={18} />
+                <TikTokIcon />
               </a>
             </div>
           </div>
