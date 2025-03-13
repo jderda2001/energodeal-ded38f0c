@@ -1,30 +1,22 @@
-
 import React from 'react';
 import { Facebook, Twitter, Linkedin, Instagram } from 'lucide-react';
-
-const FooterLink: React.FC<{href: string; children: React.ReactNode}> = ({ href, children }) => (
-  <a 
-    href={href} 
-    className="text-gray-600 hover:text-energo-yellow transition-colors"
-  >
+const FooterLink: React.FC<{
+  href: string;
+  children: React.ReactNode;
+}> = ({
+  href,
+  children
+}) => <a href={href} className="text-gray-600 hover:text-energo-yellow transition-colors">
     {children}
-  </a>
-);
-
+  </a>;
 const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
-  
-  return (
-    <footer className="bg-white border-t border-gray-200">
+  return <footer className="bg-white border-t border-gray-200">
       <div className="container-custom py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           <div>
             <div className="mb-6">
-              <img 
-                src="/lovable-uploads/8b0d87fe-7fb6-4433-8474-a2e3fcc68f6c.png" 
-                alt="EnerGoDeal" 
-                className="h-[16.8px]" /* Increased by 20% from h-14 */
-              />
+              <img alt="EnerGoDeal" src="/lovable-uploads/b07ead46-a3bd-4d3c-8d44-5f687b06e346.png" className="h-[80px]" />
             </div>
             
             <p className="text-gray-600 mb-6">
@@ -32,18 +24,10 @@ const Footer: React.FC = () => {
             </p>
             
             <div className="flex space-x-4">
-              <a 
-                href="#" 
-                className="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center text-gray-600 hover:bg-energo-yellow hover:text-white transition-colors"
-                aria-label="Facebook"
-              >
+              <a href="#" className="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center text-gray-600 hover:bg-energo-yellow hover:text-white transition-colors" aria-label="Facebook">
                 <Facebook size={18} />
               </a>
-              <a 
-                href="#" 
-                className="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center text-gray-600 hover:bg-energo-yellow hover:text-white transition-colors"
-                aria-label="LinkedIn"
-              >
+              <a href="#" className="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center text-gray-600 hover:bg-energo-yellow hover:text-white transition-colors" aria-label="LinkedIn">
                 <Linkedin size={18} />
               </a>
             </div>
@@ -82,8 +66,6 @@ const Footer: React.FC = () => {
           </div>
         </div>
       </div>
-    </footer>
-  );
+    </footer>;
 };
-
 export default Footer;
