@@ -9,8 +9,20 @@ import Testimonials from '@/components/Testimonials';
 import Faq from '@/components/Faq';
 import ContactForm from '@/components/ContactForm';
 import Footer from '@/components/Footer';
+import EbookPopup from '@/components/EbookPopup';
 
 const Index: React.FC = () => {
+  const [showEbookPopup, setShowEbookPopup] = React.useState(false);
+  
+  // Popup pojawi się po 5 sekundach od załadowania strony
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowEbookPopup(true);
+    }, 5000);
+    
+    return () => clearTimeout(timer);
+  }, []);
+  
   // Smooth scroll implementation for anchor links
   useEffect(() => {
     const handleAnchorClick = (e: MouseEvent) => {
@@ -59,6 +71,12 @@ const Index: React.FC = () => {
       
       {/* Back to top button */}
       <BackToTop />
+      
+      {/* Ebook download popup */}
+      <EbookPopup 
+        isOpen={showEbookPopup} 
+        onOpenChange={setShowEbookPopup} 
+      />
     </div>
   );
 };
