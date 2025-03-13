@@ -1,37 +1,19 @@
-
 import React from 'react';
 import { Facebook, Mail, Phone, Instagram } from 'lucide-react';
-
 const FooterLink: React.FC<{
   href: string;
   children: React.ReactNode;
 }> = ({
   href,
   children
-}) => <a href={href} className="text-gray-600 hover:text-energo-yellow transition-colors">
-    {children}
-  </a>;
+}) => {};
 
 // Custom TikTok icon since it's not available in lucide-react
-const TikTokIcon = () => (
-  <svg 
-    xmlns="http://www.w3.org/2000/svg" 
-    width="18" 
-    height="18" 
-    viewBox="0 0 24 24" 
-    fill="none" 
-    stroke="currentColor" 
-    strokeWidth="2" 
-    strokeLinecap="round" 
-    strokeLinejoin="round"
-  >
+const TikTokIcon = () => <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
     <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"></path>
-  </svg>
-);
-
+  </svg>;
 const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
-  
   return <footer className="bg-white border-t border-gray-200">
       <div className="container-custom py-12">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -45,40 +27,20 @@ const Footer: React.FC = () => {
             </p>
             
             <div className="flex space-x-4">
-              <a 
-                href="https://www.facebook.com/profile.php?id=61568254714380" 
-                className="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center text-gray-600 hover:bg-energo-yellow hover:text-white transition-colors" 
-                aria-label="Facebook"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
+              <a href="https://www.facebook.com/profile.php?id=61568254714380" className="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center text-gray-600 hover:bg-energo-yellow hover:text-white transition-colors" aria-label="Facebook" target="_blank" rel="noopener noreferrer">
                 <Facebook size={18} />
               </a>
-              <a 
-                href="https://www.instagram.com/energodeal" 
-                className="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center text-gray-600 hover:bg-energo-yellow hover:text-white transition-colors" 
-                aria-label="Instagram"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
+              <a href="https://www.instagram.com/energodeal" className="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center text-gray-600 hover:bg-energo-yellow hover:text-white transition-colors" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
                 <Instagram size={18} />
               </a>
-              <a 
-                href="https://www.tiktok.com/@energodeal" 
-                className="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center text-gray-600 hover:bg-energo-yellow hover:text-white transition-colors" 
-                aria-label="TikTok"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
+              <a href="https://www.tiktok.com/@energodeal" className="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center text-gray-600 hover:bg-energo-yellow hover:text-white transition-colors" aria-label="TikTok" target="_blank" rel="noopener noreferrer">
                 <TikTokIcon />
               </a>
             </div>
           </div>
           
           <div>
-            <h4 className="text-lg font-semibold mb-4 text-energo-navy">
-              Usługi
-            </h4>
+            
             <ul className="space-y-2">
               <li><FooterLink href="#how-it-works">Audyt energetyczny</FooterLink></li>
               <li><FooterLink href="#benefits">Optymalizacja taryf</FooterLink></li>
@@ -105,9 +67,7 @@ const Footer: React.FC = () => {
               </li>
             </ul>
             
-            <h4 className="text-lg font-semibold mb-4 mt-6 text-energo-navy">
-              Dokumenty
-            </h4>
+            
             <ul className="space-y-2">
               <li><FooterLink href="#">Polityka prywatności</FooterLink></li>
               <li><FooterLink href="#">Warunki korzystania</FooterLink></li>
@@ -128,5 +88,4 @@ const Footer: React.FC = () => {
       </div>
     </footer>;
 };
-
 export default Footer;
