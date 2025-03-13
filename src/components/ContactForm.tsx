@@ -9,6 +9,7 @@ import { createClient } from '@supabase/supabase-js';
 import { Button } from './ui/button';
 import { Input } from './ui/input';
 import { Textarea } from './ui/textarea';
+import { Alert, AlertTitle, AlertDescription } from './ui/alert';
 
 // Initialize Supabase client
 const supabaseUrl = 'https://xpgxbvazscgxvrnrfxpw.supabase.co';
@@ -22,6 +23,7 @@ const ContactForm: React.FC = () => {
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  const [hasError, setHasError] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
     company: '',
@@ -42,61 +44,81 @@ const ContactForm: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setHasError(false);
+    
     try {
-      // Submit to Supabase
-      const { error: supabaseError } = await supabase.from('contact_submissions').insert([formData]);
-      if (supabaseError) {
-        console.error('Error submitting to Supabase:', supabaseError);
+      // First, try to submit to Make.com webhook (primary destination)
+      let makeSuccess = false;
+      try {
+        const makeResponse = await fetch(MAKE_WEBHOOK_URL, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            ...formData,
+            source: 'website_contact_form',
+            timestamp: new Date().toISOString()
+          }),
+        });
+
+        if (makeResponse.ok) {
+          console.log('Successfully submitted to Make.com');
+          makeSuccess = true;
+        } else {
+          console.error('Error submitting to Make.com:', makeResponse.statusText);
+        }
+      } catch (makeErr) {
+        console.error('Error connecting to Make.com:', makeErr);
+      }
+
+      // As a backup, try to submit to Supabase
+      let supabaseSuccess = false;
+      try {
+        const { error: supabaseError } = await supabase.from('contact_submissions').insert([formData]);
+        if (supabaseError) {
+          console.error('Error submitting to Supabase:', supabaseError);
+        } else {
+          console.log('Successfully submitted to Supabase');
+          supabaseSuccess = true;
+        }
+      } catch (supabaseErr) {
+        console.error('Error connecting to Supabase:', supabaseErr);
+      }
+
+      // If at least one method succeeded, show success
+      if (makeSuccess || supabaseSuccess) {
+        setIsSuccess(true);
+        toast({
+          title: "Formularz wysłany pomyślnie!",
+          description: "Nasz ekspert skontaktuje się z Tobą w ciągu 24 godzin.",
+          variant: "default"
+        });
+
+        // Reset form after success
+        setTimeout(() => {
+          setFormData({
+            name: '',
+            company: '',
+            email: '',
+            phone: '',
+            monthlyBill: '',
+            message: ''
+          });
+          setIsSuccess(false);
+        }, 3000);
+      } else {
+        // Both methods failed
+        setHasError(true);
         toast({
           title: "Błąd podczas zapisywania formularza",
           description: "Dane nie zostały zapisane. Prosimy spróbować później.",
           variant: "destructive"
         });
-        setIsSubmitting(false);
-        return;
       }
-
-      // Submit to Make.com webhook
-      const makeResponse = await fetch(MAKE_WEBHOOK_URL, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          ...formData,
-          source: 'website_contact_form',
-          timestamp: new Date().toISOString()
-        }),
-      });
-
-      if (!makeResponse.ok) {
-        console.error('Error submitting to Make.com:', makeResponse.statusText);
-        // Continue with success message even if Make.com fails - we have the data in Supabase
-      } else {
-        console.log('Successfully submitted to Make.com');
-      }
-
-      setIsSuccess(true);
-      toast({
-        title: "Formularz wysłany pomyślnie!",
-        description: "Nasz ekspert skontaktuje się z Tobą w ciągu 24 godzin.",
-        variant: "default"
-      });
-
-      // Reset form after success
-      setTimeout(() => {
-        setFormData({
-          name: '',
-          company: '',
-          email: '',
-          phone: '',
-          monthlyBill: '',
-          message: ''
-        });
-        setIsSuccess(false);
-      }, 3000);
     } catch (err) {
       console.error('Error:', err);
+      setHasError(true);
       toast({
         title: "Błąd podczas wysyłania formularza",
         description: "Spróbuj ponownie za chwilę",
@@ -124,6 +146,15 @@ const ContactForm: React.FC = () => {
               <h3 className="text-2xl font-semibold mb-6 text-energo-navy text-center">
                 Formularz kontaktowy
               </h3>
+              
+              {hasError && (
+                <Alert variant="destructive" className="mb-6">
+                  <AlertTitle>Błąd podczas zapisywania formularza</AlertTitle>
+                  <AlertDescription>
+                    Dane nie zostały zapisane. Prosimy spróbować później.
+                  </AlertDescription>
+                </Alert>
+              )}
               
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
