@@ -15,8 +15,8 @@ const supabaseUrl = 'https://xpgxbvazscgxvrnrfxpw.supabase.co';
 const supabaseAnonKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InhwZ3hidmF6c2NneHZybnJmeHB3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTQzMzcxMjgsImV4cCI6MjAyOTkxMzEyOH0.40NPk3cxqexZLkO-ZXlzDlZRLjmXV1WUuUj1OZWtAd0';
 const supabase = createClient(supabaseUrl, supabaseAnonKey);
 
-// Make.com webhook URL - Replace this with your actual webhook URL from Make.com
-const MAKE_WEBHOOK_URL = "https://hook.eu2.make.com/YOUR_WEBHOOK_ID_HERE";
+// Make.com webhook URL - Your actual webhook URL
+const MAKE_WEBHOOK_URL = "https://hook.eu2.make.com/upl2u80c5qexu49a1q93clyngvw71xbh";
 
 const ContactForm: React.FC = () => {
   const { toast } = useToast();
