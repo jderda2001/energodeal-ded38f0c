@@ -38,7 +38,7 @@ const EbookPopup: React.FC<EbookPopupProps> = ({ isOpen, onOpenChange }) => {
     
     try {
       // Integracja z Make.com - wysyłka danych do webhooka
-      const response = await fetch('https://hook.eu1.make.com/your-webhook-id', {
+      const response = await fetch('https://hook.eu2.make.com/ts6hnm1h9viumlf7ohuksh593vpit1q8', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -79,7 +79,7 @@ const EbookPopup: React.FC<EbookPopupProps> = ({ isOpen, onOpenChange }) => {
       <DialogContent className="sm:max-w-md px-6 py-8 rounded-xl">
         <button 
           onClick={() => onOpenChange(false)} 
-          className="absolute right-4 top-4 rounded-full p-2 hover:bg-gray-100 transition-colors"
+          className="absolute right-4 top-4 rounded-full p-2 hover:bg-gray-100 transition-colors z-10"
           aria-label="Zamknij"
         >
           <X className="h-4 w-4 text-gray-500" />
