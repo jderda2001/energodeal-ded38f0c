@@ -76,7 +76,7 @@ const EbookPopup: React.FC<EbookPopupProps> = ({ isOpen, onOpenChange }) => {
 
   return (
     <Dialog open={isOpen} onOpenChange={onOpenChange}>
-      <DialogContent className="sm:max-w-md px-6 py-8 rounded-xl">
+      <DialogContent className="sm:max-w-md px-6 py-8 rounded-xl" closeButton={false}>
         <button 
           onClick={() => onOpenChange(false)} 
           className="absolute right-4 top-4 rounded-full p-2 hover:bg-gray-100 transition-colors z-10"
