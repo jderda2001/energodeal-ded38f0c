@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Bolt, ArrowRight } from 'lucide-react';
 import FadeInSection from './ui/FadeInSection';
@@ -36,12 +37,12 @@ const Hero: React.FC = () => {
               
               <div className="flex items-center gap-6 mt-10">
                 <div className="text-center">
-                  <div className="text-4xl font-bold text-energo-navy">23%</div>
+                  <div className="text-4xl font-bold text-energo-navy">27%</div>
                   <p className="text-sm text-gray-600">Średnia oszczędność</p>
                 </div>
                 <div className="h-12 w-px bg-gray-200"></div>
                 <div className="text-center">
-                  <div className="text-4xl font-bold text-energo-navy">500+</div>
+                  <div className="text-4xl font-bold text-energo-navy">30+</div>
                   <p className="text-sm text-gray-600">Zadowolonych firm</p>
                 </div>
                 <div className="h-12 w-px bg-gray-200"></div>

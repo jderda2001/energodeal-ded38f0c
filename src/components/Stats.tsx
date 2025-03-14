@@ -16,21 +16,21 @@ const industries = [
     icon: Building,
     name: 'Biura i usługi',
     description: 'Firmy usługowe mogą znacząco zredukować koszty energii elektrycznej bez wpływu na komfort pracy i obsługę klientów.',
-    averageSavings: '19%',
+    averageSavings: '37%',
     color: 'bg-green-100'
   },
   {
     icon: Store,
     name: 'Handel detaliczny',
     description: 'Sklepy i centra handlowe mogą obniżyć rachunki za prąd przy zachowaniu pełnej funkcjonalności i oświetlenia powierzchni sprzedaży.',
-    averageSavings: '21%',
+    averageSavings: '28%',
     color: 'bg-yellow-100'
   },
   {
     icon: ShoppingBag,
     name: 'Hotelarstwo i gastronomia',
     description: 'Hotele i restauracje mogą znacznie zredukować koszty energii, utrzymując najwyższy standard obsługi gości.',
-    averageSavings: '23%',
+    averageSavings: '32%',
     color: 'bg-red-100'
   }
 ];

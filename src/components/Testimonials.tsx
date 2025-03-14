@@ -181,13 +181,13 @@ const Testimonials: React.FC = () => {
         <FadeInSection className="mt-16">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div className="bg-white rounded-xl p-6 border border-gray-100 shadow-sm">
-              <div className="text-4xl font-bold text-energo-yellow mb-2">500+</div>
+              <div className="text-4xl font-bold text-energo-yellow mb-2">30+</div>
               <div className="text-lg font-semibold text-energo-navy mb-1">Zadowolonych klientów</div>
               <p className="text-gray-600 text-sm">Firm, które skutecznie obniżyły koszty energii dzięki naszym usługom</p>
             </div>
             
             <div className="bg-white rounded-xl p-6 border border-gray-100 shadow-sm">
-              <div className="text-4xl font-bold text-energo-yellow mb-2">15M+ zł</div>
+              <div className="text-4xl font-bold text-energo-yellow mb-2">700K+ zł</div>
               <div className="text-lg font-semibold text-energo-navy mb-1">Łącznych oszczędności</div>
               <p className="text-gray-600 text-sm">Kwota zaoszczędzona przez wszystkich naszych klientów łącznie</p>
             </div>
