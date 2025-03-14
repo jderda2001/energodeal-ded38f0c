@@ -1,7 +1,8 @@
 
 import React from 'react';
-import { Bolt, ArrowRight } from 'lucide-react';
+import { Bolt, ArrowRight, BookOpen } from 'lucide-react';
 import FadeInSection from './ui/FadeInSection';
+
 const Hero: React.FC = () => {
   return <section className="relative pt-32 pb-20 md:pt-40 md:pb-32 overflow-hidden bg-white">
       {/* Abstract Background Elements */}
@@ -24,7 +25,7 @@ const Hero: React.FC = () => {
               </h1>
               
               <p className="text-lg md:text-xl text-gray-600 mb-8 leading-relaxed">
-                Pomagamy przedsiębiorstwom w Polsce zredukować koszty energii elektrycznej nawet o 23%, bez zmian w działaniu firmy. Płacisz tylko za realne oszczędności.
+                Pomagamy przedsiębiorstwom w Polsce zredukować koszty energii elektrycznej nawet o 27%, bez zmian w działaniu firmy. Płacisz tylko za realne oszczędności.
               </p>
               
               <div className="flex flex-col sm:flex-row gap-4">
@@ -33,6 +34,13 @@ const Hero: React.FC = () => {
                   <ArrowRight size={18} />
                 </a>
                 
+                <button 
+                  onClick={() => window.dispatchEvent(new CustomEvent('open-ebook-popup'))}
+                  className="btn-secondary flex items-center justify-center gap-2"
+                >
+                  <BookOpen size={18} />
+                  <span>Pobierz darmowy ebook</span>
+                </button>
               </div>
               
               <div className="flex items-center gap-6 mt-10">

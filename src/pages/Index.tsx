@@ -20,7 +20,17 @@ const Index: React.FC = () => {
       setShowEbookPopup(true);
     }, 5000);
     
-    return () => clearTimeout(timer);
+    // Custom event listener dla otwierania popupu z innych komponentów
+    const handleOpenPopup = () => {
+      setShowEbookPopup(true);
+    };
+    
+    window.addEventListener('open-ebook-popup', handleOpenPopup);
+    
+    return () => {
+      clearTimeout(timer);
+      window.removeEventListener('open-ebook-popup', handleOpenPopup);
+    };
   }, []);
   
   // Smooth scroll implementation for anchor links
