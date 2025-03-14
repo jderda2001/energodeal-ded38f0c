@@ -17,6 +17,7 @@ interface EbookPopupProps {
 }
 
 const formSchema = z.object({
+  name: z.string().optional(),
   email: z.string().email("Wprowadź prawidłowy adres e-mail"),
   phone: z.string().min(9, "Wprowadź prawidłowy numer telefonu").max(15)
 });
@@ -28,6 +29,7 @@ const EbookPopup: React.FC<EbookPopupProps> = ({ isOpen, onOpenChange }) => {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
+      name: '',
       email: '',
       phone: ''
     }
@@ -44,6 +46,7 @@ const EbookPopup: React.FC<EbookPopupProps> = ({ isOpen, onOpenChange }) => {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
+          name: values.name || '',
           email: values.email,
           phone: values.phone,
           timestamp: new Date().toISOString(),
@@ -102,6 +105,24 @@ const EbookPopup: React.FC<EbookPopupProps> = ({ isOpen, onOpenChange }) => {
         
         <Form {...form}>
           <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-4 pt-4">
+            <FormField
+              control={form.control}
+              name="name"
+              render={({ field }) => (
+                <FormItem>
+                  <FormControl>
+                    <Input
+                      type="text"
+                      placeholder="Twoje imię (opcjonalnie)"
+                      className="w-full border-gray-300 focus:border-energo-yellow focus:ring-energo-yellow/20"
+                      {...field}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            
             <FormField
               control={form.control}
               name="email"
