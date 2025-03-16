@@ -58,11 +58,13 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ links }) => {
     setIsOpen(false);
   };
 
-  const scrollToContact = () => {
-    const contactSection = document.getElementById('contact');
-    if (contactSection) {
+  const handleLinkClick = (href: string) => {
+    const sectionId = href.replace('#', '');
+    const section = document.getElementById(sectionId);
+    
+    if (section) {
       const headerOffset = 80;
-      const elementPosition = contactSection.getBoundingClientRect().top;
+      const elementPosition = section.getBoundingClientRect().top;
       const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
       
       window.scrollTo({
@@ -70,6 +72,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ links }) => {
         behavior: 'smooth'
       });
     }
+    
     closeMenu();
   };
 
@@ -105,13 +108,12 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ links }) => {
                   <ul className="space-y-6">
                     {links.map((link) => (
                       <li key={link.href}>
-                        <a
-                          href={link.href}
-                          className="text-xl font-medium text-energo-navy hover:text-energo-yellow transition-colors block py-2"
-                          onClick={closeMenu}
+                        <button
+                          onClick={() => handleLinkClick(link.href)}
+                          className="text-xl font-medium text-energo-navy hover:text-energo-yellow transition-colors block py-2 text-left w-full"
                         >
                           {link.title}
-                        </a>
+                        </button>
                       </li>
                     ))}
                   </ul>
@@ -120,7 +122,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ links }) => {
                 {/* "Zaoszczędź" button in mobile menu */}
                 <div className="mt-auto px-8 pb-8 pt-4">
                   <button
-                    onClick={scrollToContact}
+                    onClick={() => handleLinkClick('#contact')}
                     className="w-full py-4 px-4 bg-energo-yellow text-energo-navy font-medium rounded-md hover:bg-energo-yellow/90 transition-colors text-lg"
                   >
                     Zaoszczędź
@@ -175,13 +177,12 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ links }) => {
           <ul className="space-y-6">
             {links.map((link) => (
               <li key={link.href}>
-                <a
-                  href={link.href}
-                  className="text-lg font-medium text-energo-navy hover:text-energo-yellow transition-colors"
-                  onClick={closeMenu}
+                <button
+                  onClick={() => handleLinkClick(link.href)}
+                  className="text-lg font-medium text-energo-navy hover:text-energo-yellow transition-colors w-full text-left"
                 >
                   {link.title}
-                </a>
+                </button>
               </li>
             ))}
           </ul>
@@ -189,7 +190,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ links }) => {
           {/* "Zaoszczędź" button in mobile menu */}
           <div className="mt-8 pt-6 border-t border-gray-100">
             <button
-              onClick={scrollToContact}
+              onClick={() => handleLinkClick('#contact')}
               className="w-full py-3 px-4 bg-energo-yellow text-energo-navy font-medium rounded-md hover:bg-energo-yellow/90 transition-colors"
             >
               Zaoszczędź
