@@ -2,6 +2,15 @@
 import React, { useState, useEffect } from 'react';
 import { X, Menu } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { 
+  Drawer,
+  DrawerClose,
+  DrawerContent,
+  DrawerOverlay,
+  DrawerPortal,
+  DrawerTrigger 
+} from '@/components/ui/drawer';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 interface MobileMenuProps {
   links: {
@@ -12,6 +21,7 @@ interface MobileMenuProps {
 
 const MobileMenu: React.FC<MobileMenuProps> = ({ links }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const isMobile = useIsMobile();
 
   // Close menu when window is resized to desktop size
   useEffect(() => {
@@ -63,6 +73,68 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ links }) => {
     closeMenu();
   };
 
+  // Use the Drawer component for a better mobile experience
+  if (isMobile) {
+    return (
+      <div className="md:hidden">
+        <Drawer open={isOpen} onOpenChange={setIsOpen}>
+          <DrawerTrigger asChild>
+            <button
+              className="p-2 rounded-md text-energo-navy focus:outline-none"
+              aria-label={isOpen ? 'Close menu' : 'Open menu'}
+            >
+              <Menu size={24} />
+            </button>
+          </DrawerTrigger>
+          <DrawerPortal>
+            <DrawerOverlay className="bg-black/60" />
+            <DrawerContent className="h-[92vh] focus:outline-none">
+              <div className="flex flex-col h-full">
+                <div className="flex justify-end p-4">
+                  <DrawerClose asChild>
+                    <button
+                      className="p-2 rounded-md text-energo-navy hover:text-energo-yellow transition-colors"
+                      aria-label="Close menu"
+                    >
+                      <X size={24} />
+                    </button>
+                  </DrawerClose>
+                </div>
+                
+                <nav className="px-8 py-4 flex-1">
+                  <ul className="space-y-6">
+                    {links.map((link) => (
+                      <li key={link.href}>
+                        <a
+                          href={link.href}
+                          className="text-xl font-medium text-energo-navy hover:text-energo-yellow transition-colors block py-2"
+                          onClick={closeMenu}
+                        >
+                          {link.title}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </nav>
+                
+                {/* "Zaoszczędź" button in mobile menu */}
+                <div className="mt-auto px-8 pb-8 pt-4">
+                  <button
+                    onClick={scrollToContact}
+                    className="w-full py-4 px-4 bg-energo-yellow text-energo-navy font-medium rounded-md hover:bg-energo-yellow/90 transition-colors text-lg"
+                  >
+                    Zaoszczędź
+                  </button>
+                </div>
+              </div>
+            </DrawerContent>
+          </DrawerPortal>
+        </Drawer>
+      </div>
+    );
+  }
+
+  // Fallback to original menu for non-mobile or if isMobile hasn't been determined yet
   return (
     <div className="md:hidden">
       <button
