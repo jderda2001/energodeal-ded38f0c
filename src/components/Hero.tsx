@@ -73,7 +73,7 @@ const Hero: React.FC = () => {
                 
                 <div className="absolute inset-0 z-20 flex flex-col items-center justify-center p-8 text-center">
                   <Bolt size={64} className="text-energo-yellow mb-6" />
-                  <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">Energia nie musi być droga</h3>
+                  <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">Energia może być tania</h3>
                   <p className="text-white/90 max-w-md">
                     Dzięki naszej unikalnej metodzie optymalizacji, pomagamy polskim firmom znacząco obniżyć koszty energii elektrycznej.
                   </p>
