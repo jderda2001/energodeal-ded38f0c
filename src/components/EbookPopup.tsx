@@ -79,32 +79,32 @@ const EbookPopup: React.FC<EbookPopupProps> = ({ isOpen, onOpenChange }) => {
 
   return (
     <Dialog open={isOpen} onOpenChange={onOpenChange}>
-      <DialogContent className="sm:max-w-md px-6 py-8 rounded-xl" closeButton={false}>
+      <DialogContent className="sm:max-w-md w-[95%] max-h-[90vh] overflow-y-auto px-4 py-6 sm:px-6 sm:py-8 rounded-xl" closeButton={false}>
         <button 
           onClick={() => onOpenChange(false)} 
-          className="absolute right-4 top-4 rounded-full p-2 hover:bg-gray-100 transition-colors z-10"
+          className="absolute right-3 top-3 sm:right-4 sm:top-4 rounded-full p-1.5 sm:p-2 hover:bg-gray-100 transition-colors z-10"
           aria-label="Zamknij"
         >
-          <X className="h-4 w-4 text-gray-500" />
+          <X className="h-3 w-3 sm:h-4 sm:w-4 text-gray-500" />
         </button>
         
         <DialogHeader className="pb-2">
-          <div className="flex items-center justify-center mb-4">
-            <div className="bg-energo-yellow/20 p-3 rounded-full">
-              <BookOpen className="h-8 w-8 text-energo-yellow" />
+          <div className="flex items-center justify-center mb-3 sm:mb-4">
+            <div className="bg-energo-yellow/20 p-2 sm:p-3 rounded-full">
+              <BookOpen className="h-6 w-6 sm:h-8 sm:w-8 text-energo-yellow" />
             </div>
           </div>
-          <DialogTitle className="text-2xl md:text-3xl font-bold text-center">
+          <DialogTitle className="text-xl sm:text-2xl md:text-3xl font-bold text-center">
             Pobierz darmowy ebook!
           </DialogTitle>
-          <DialogDescription className="text-center max-w-sm mx-auto pt-2">
+          <DialogDescription className="text-center max-w-sm mx-auto pt-1 sm:pt-2 text-sm sm:text-base">
             Wprowadź swoje dane, a wyślemy Ci nasz ekskluzywny poradnik 
             o efektywności energetycznej dla firm.
           </DialogDescription>
         </DialogHeader>
         
         <Form {...form}>
-          <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-4 pt-4">
+          <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-3 sm:space-y-4 pt-3 sm:pt-4">
             <FormField
               control={form.control}
               name="name"
@@ -114,7 +114,7 @@ const EbookPopup: React.FC<EbookPopupProps> = ({ isOpen, onOpenChange }) => {
                     <Input
                       type="text"
                       placeholder="Twoje imię (opcjonalnie)"
-                      className="w-full border-gray-300 focus:border-energo-yellow focus:ring-energo-yellow/20"
+                      className="w-full border-gray-300 focus:border-energo-yellow focus:ring-energo-yellow/20 py-1.5 sm:py-2"
                       {...field}
                     />
                   </FormControl>
@@ -132,7 +132,7 @@ const EbookPopup: React.FC<EbookPopupProps> = ({ isOpen, onOpenChange }) => {
                     <Input
                       type="email"
                       placeholder="Twój adres email"
-                      className="w-full border-gray-300 focus:border-energo-yellow focus:ring-energo-yellow/20"
+                      className="w-full border-gray-300 focus:border-energo-yellow focus:ring-energo-yellow/20 py-1.5 sm:py-2"
                       {...field}
                     />
                   </FormControl>
@@ -150,7 +150,7 @@ const EbookPopup: React.FC<EbookPopupProps> = ({ isOpen, onOpenChange }) => {
                     <Input
                       type="tel"
                       placeholder="Twój numer telefonu"
-                      className="w-full border-gray-300 focus:border-energo-yellow focus:ring-energo-yellow/20"
+                      className="w-full border-gray-300 focus:border-energo-yellow focus:ring-energo-yellow/20 py-1.5 sm:py-2"
                       {...field}
                     />
                   </FormControl>
@@ -159,11 +159,11 @@ const EbookPopup: React.FC<EbookPopupProps> = ({ isOpen, onOpenChange }) => {
               )}
             />
             
-            <div className="pt-2">
+            <div className="pt-1 sm:pt-2">
               <Button 
                 type="submit" 
                 disabled={isSubmitting}
-                className="w-full bg-energo-navy hover:bg-energo-navy/90 text-white font-medium py-6"
+                className="w-full bg-energo-navy hover:bg-energo-navy/90 text-white font-medium py-1.5 sm:py-2 h-auto"
               >
                 {isSubmitting ? "Wysyłanie..." : "Pobierz teraz"}
               </Button>
@@ -171,26 +171,26 @@ const EbookPopup: React.FC<EbookPopupProps> = ({ isOpen, onOpenChange }) => {
           </form>
         </Form>
         
-        <div className="mt-6 flex items-start gap-2 text-xs text-muted-foreground bg-gray-50 p-3 rounded-lg">
-          <Info className="h-4 w-4 text-gray-400 flex-shrink-0 mt-0.5" />
-          <p>
+        <div className="mt-4 sm:mt-6 flex items-start gap-2 text-xs text-muted-foreground bg-gray-50 p-2 sm:p-3 rounded-lg">
+          <Info className="h-3 w-3 sm:h-4 sm:w-4 text-gray-400 flex-shrink-0 mt-0.5" />
+          <p className="text-[10px] sm:text-xs">
             Wysyłając formularz, zgadzasz się na otrzymywanie materiałów informacyjnych na podany adres email oraz numer telefonu.
             Twoje dane są bezpieczne i nie udostępniamy ich osobom trzecim.
           </p>
         </div>
         
-        <div className="mt-4 text-center">
+        <div className="mt-3 sm:mt-4 text-center">
           <Popover>
             <PopoverTrigger asChild>
-              <button className="text-xs text-energo-navy/70 hover:text-energo-navy underline">
+              <button className="text-[10px] sm:text-xs text-energo-navy/70 hover:text-energo-navy underline">
                 Masz pytania? Skontaktuj się z nami
               </button>
             </PopoverTrigger>
-            <PopoverContent className="w-80">
+            <PopoverContent className="w-64 sm:w-80">
               <div className="space-y-2">
                 <h4 className="font-medium">Kontakt</h4>
-                <p className="text-sm">Email: kontakt@energodeal.pl</p>
-                <p className="text-sm">Telefon: +48 123 456 789</p>
+                <p className="text-xs sm:text-sm">Email: kontakt@energodeal.pl</p>
+                <p className="text-xs sm:text-sm">Telefon: +48 123 456 789</p>
               </div>
             </PopoverContent>
           </Popover>

@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from 'react';
 import { cn } from '@/lib/utils';
 import MobileMenu from './ui/MobileMenu';
@@ -50,10 +51,10 @@ const Header: React.FC = () => {
   };
   return <header className={cn('fixed top-0 left-0 right-0 z-50 transition-all duration-300 py-4 backdrop-blur-md', scrolled ? 'bg-white/90 shadow-sm py-3' : 'bg-transparent')}>
       <div className="container-custom flex items-center justify-between">
-        {/* Logo - increased by 20% */}
+        {/* Logo - significantly increased for mobile */}
         <a href="/" className="flex items-center">
           <div className="flex items-center gap-2">
-            <img alt="EnerGoDeal" className="h-[19.2px] sm:h-24" src="/lovable-uploads/b48cbced-9429-4039-9ecb-6389f900b3b4.png" />
+            <img alt="EnerGoDeal" className="h-8 sm:h-[19.2px] md:h-24" src="/lovable-uploads/b48cbced-9429-4039-9ecb-6389f900b3b4.png" />
           </div>
         </a>
 
